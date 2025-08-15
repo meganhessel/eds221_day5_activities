@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>us_tilapia_imports</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="us_tilapia_imports_files/libs/clipboard/clipboard.min.js"></script>
+<script src="us_tilapia_imports_files/libs/quarto-html/quarto.js"></script>
+<script src="us_tilapia_imports_files/libs/quarto-html/popper.min.js"></script>
+<script src="us_tilapia_imports_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="us_tilapia_imports_files/libs/quarto-html/anchor.min.js"></script>
+<link href="us_tilapia_imports_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="us_tilapia_imports_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="us_tilapia_imports_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="us_tilapia_imports_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="us_tilapia_imports_files/libs/bootstrap/bootstrap-c0367b04c37547644fece4185067e4a7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">us_tilapia_imports</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="tilapia" class="level2">
+<h2 class="anchored" data-anchor-id="tilapia">tilapia</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load packages and data </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.1.0     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>here() starts at /Users/meganhessel/Documents/MEDS/EDS-221/eds221_day5_activities</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'janitor'
+
+The following objects are masked from 'package:stats':
+
+    chisq.test, fisher.test</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># import data </span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>tilapia_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>,<span class="st">"us_tilapia_imports.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 64 Columns: 28
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (1): country
+num (27): 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, ...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#explore the data</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(tilapia_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "country" "1992"    "1993"    "1994"    "1995"    "1996"    "1997"   
+ [8] "1998"    "1999"    "2000"    "2001"    "2002"    "2003"    "2004"   
+[15] "2005"    "2006"    "2007"    "2008"    "2009"    "2010"    "2011"   
+[22] "2012"    "2013"    "2014"    "2015"    "2016"    "2017"    "2018"   </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(tilapia_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 64 28</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tilapia_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   country               1992             1993            1994        
+ Length:64          Min.   :   2.0   Min.   :    1   Min.   :    5.0  
+ Class :character   1st Qu.:   4.0   1st Qu.:   10   1st Qu.:   43.5  
+ Mode  :character   Median :  85.0   Median :   79   Median :   89.0  
+                    Mean   : 679.1   Mean   : 1653   Mean   : 2139.3  
+                    3rd Qu.: 197.5   3rd Qu.:  494   3rd Qu.:  923.5  
+                    Max.   :6473.0   Max.   :21716   Max.   :26932.0  
+                    NA's   :53       NA's   :49      NA's   :49       
+      1995              1996               1997              1998      
+ Min.   :    2.0   Min.   :    0.00   Min.   :    2.0   Min.   :    2  
+ 1st Qu.:   26.0   1st Qu.:   20.25   1st Qu.:   41.0   1st Qu.:   36  
+ Median :  142.0   Median :  185.00   Median :  127.0   Median :  229  
+ Mean   : 1820.5   Mean   : 2097.45   Mean   : 2694.7   Mean   : 3833  
+ 3rd Qu.:  764.5   3rd Qu.:  563.75   3rd Qu.:  587.8   3rd Qu.: 1254  
+ Max.   :28040.0   Max.   :33109.00   Max.   :42970.0   Max.   :49416  
+ NA's   :45        NA's   :44         NA's   :44        NA's   :48     
+      1999              2000            2001            2002         
+ Min.   :    1.0   Min.   :    1   Min.   :    8   Min.   :    4.00  
+ 1st Qu.:   11.5   1st Qu.:   37   1st Qu.:   44   1st Qu.:   26.25  
+ Median :   45.0   Median :  159   Median :  117   Median :  129.50  
+ Mean   : 3602.4   Mean   : 4248   Mean   : 5920   Mean   : 6728.77  
+ 3rd Qu.: 1118.5   3rd Qu.: 2306   3rd Qu.: 3168   3rd Qu.: 4597.50  
+ Max.   :55057.0   Max.   :39070   Max.   :65761   Max.   :58391.00  
+ NA's   :41        NA's   :43      NA's   :43      NA's   :42        
+      2003                2004             2005                2006         
+ Min.   :     1.00   Min.   :     1   Min.   :     1.00   Min.   :     5.0  
+ 1st Qu.:    28.75   1st Qu.:    27   1st Qu.:    39.25   1st Qu.:    98.0  
+ Median :    63.00   Median :   123   Median :   165.00   Median :   615.5  
+ Mean   :  7652.19   Mean   :  8592   Mean   : 10629.96   Mean   : 14529.5  
+ 3rd Qu.:  1898.25   3rd Qu.:   712   3rd Qu.:  2177.00   3rd Qu.:  3199.2  
+ Max.   :100266.00   Max.   :132126   Max.   :165428.00   Max.   :228871.0  
+ NA's   :38          NA's   :35       NA's   :36          NA's   :40        
+      2007             2008                2009             2010          
+ Min.   :     1   Min.   :     2.00   Min.   :     1   Min.   :     3.00  
+ 1st Qu.:    47   1st Qu.:    44.75   1st Qu.:    44   1st Qu.:    30.75  
+ Median :   295   Median :   475.00   Median :   693   Median :   719.00  
+ Mean   : 13684   Mean   : 14127.07   Mean   : 18370   Mean   : 19790.33  
+ 3rd Qu.:  1040   3rd Qu.:  4890.75   3rd Qu.: 10569   3rd Qu.:  7000.00  
+ Max.   :264888   Max.   :262908.00   Max.   :287527   Max.   :349479.00  
+ NA's   :36       NA's   :36          NA's   :42       NA's   :40         
+      2011               2012             2013             2014          
+ Min.   :     0.0   Min.   :     0   Min.   :     1   Min.   :     6.00  
+ 1st Qu.:   139.5   1st Qu.:    43   1st Qu.:    61   1st Qu.:    58.75  
+ Median :   514.5   Median :   307   Median :   279   Median :   250.50  
+ Mean   : 16660.1   Mean   : 17987   Mean   : 18692   Mean   : 18160.21  
+ 3rd Qu.:  4988.0   3rd Qu.:  6426   3rd Qu.:  6404   3rd Qu.:  6406.25  
+ Max.   :318298.0   Max.   :382278   Max.   :371001   Max.   :380445.00  
+ NA's   :38         NA's   :36       NA's   :37       NA's   :36         
+      2015               2016               2017             2018         
+ Min.   :     2.0   Min.   :     1.0   Min.   :     1   Min.   :     0.0  
+ 1st Qu.:   112.8   1st Qu.:   103.5   1st Qu.:    52   1st Qu.:    26.5  
+ Median :   588.5   Median :   524.5   Median :   460   Median :   607.0  
+ Mean   : 19080.1   Mean   : 15521.6   Mean   : 14924   Mean   : 15403.4  
+ 3rd Qu.:  8930.5   3rd Qu.:  5321.0   3rd Qu.:  5612   3rd Qu.:  5184.0  
+ Max.   :368330.0   Max.   :320168.0   Max.   :294863   Max.   :313244.0  
+ NA's   :38         NA's   :36         NA's   :37       NA's   :37        </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(tilapia_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">tilapia_data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">64</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">28</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">27</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: character</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 13%">
+<col style="width: 19%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 8%">
+<col style="width: 12%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">empty</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: right;">whitespace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">country</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 10%">
+<col style="width: 14%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 3%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1992</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">679.09</td>
+<td style="text-align: right;">1924.67</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">85.0</td>
+<td style="text-align: right;">197.50</td>
+<td style="text-align: right;">6473</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1993</td>
+<td style="text-align: right;">49</td>
+<td style="text-align: right;">0.23</td>
+<td style="text-align: right;">1652.73</td>
+<td style="text-align: right;">5557.75</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">10.00</td>
+<td style="text-align: right;">79.0</td>
+<td style="text-align: right;">494.00</td>
+<td style="text-align: right;">21716</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1994</td>
+<td style="text-align: right;">49</td>
+<td style="text-align: right;">0.23</td>
+<td style="text-align: right;">2139.27</td>
+<td style="text-align: right;">6876.44</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">43.50</td>
+<td style="text-align: right;">89.0</td>
+<td style="text-align: right;">923.50</td>
+<td style="text-align: right;">26932</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1995</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">1820.47</td>
+<td style="text-align: right;">6371.44</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">26.00</td>
+<td style="text-align: right;">142.0</td>
+<td style="text-align: right;">764.50</td>
+<td style="text-align: right;">28040</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1996</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">0.31</td>
+<td style="text-align: right;">2097.45</td>
+<td style="text-align: right;">7331.84</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">20.25</td>
+<td style="text-align: right;">185.0</td>
+<td style="text-align: right;">563.75</td>
+<td style="text-align: right;">33109</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1997</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">0.31</td>
+<td style="text-align: right;">2694.65</td>
+<td style="text-align: right;">9530.54</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">41.00</td>
+<td style="text-align: right;">127.0</td>
+<td style="text-align: right;">587.75</td>
+<td style="text-align: right;">42970</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1998</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">3833.38</td>
+<td style="text-align: right;">12220.28</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">36.00</td>
+<td style="text-align: right;">229.0</td>
+<td style="text-align: right;">1254.25</td>
+<td style="text-align: right;">49416</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1999</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">0.36</td>
+<td style="text-align: right;">3602.39</td>
+<td style="text-align: right;">11575.24</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">11.50</td>
+<td style="text-align: right;">45.0</td>
+<td style="text-align: right;">1118.50</td>
+<td style="text-align: right;">55057</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2000</td>
+<td style="text-align: right;">43</td>
+<td style="text-align: right;">0.33</td>
+<td style="text-align: right;">4247.86</td>
+<td style="text-align: right;">10339.62</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">37.00</td>
+<td style="text-align: right;">159.0</td>
+<td style="text-align: right;">2306.00</td>
+<td style="text-align: right;">39070</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2001</td>
+<td style="text-align: right;">43</td>
+<td style="text-align: right;">0.33</td>
+<td style="text-align: right;">5919.62</td>
+<td style="text-align: right;">15328.23</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">44.00</td>
+<td style="text-align: right;">117.0</td>
+<td style="text-align: right;">3168.00</td>
+<td style="text-align: right;">65761</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2002</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">0.34</td>
+<td style="text-align: right;">6728.77</td>
+<td style="text-align: right;">16163.26</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">26.25</td>
+<td style="text-align: right;">129.5</td>
+<td style="text-align: right;">4597.50</td>
+<td style="text-align: right;">58391</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2003</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">7652.19</td>
+<td style="text-align: right;">21558.23</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">28.75</td>
+<td style="text-align: right;">63.0</td>
+<td style="text-align: right;">1898.25</td>
+<td style="text-align: right;">100266</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2004</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">0.45</td>
+<td style="text-align: right;">8592.00</td>
+<td style="text-align: right;">26611.99</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">27.00</td>
+<td style="text-align: right;">123.0</td>
+<td style="text-align: right;">712.00</td>
+<td style="text-align: right;">132126</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2005</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">0.44</td>
+<td style="text-align: right;">10629.96</td>
+<td style="text-align: right;">32722.28</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">39.25</td>
+<td style="text-align: right;">165.0</td>
+<td style="text-align: right;">2177.00</td>
+<td style="text-align: right;">165428</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2006</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">0.38</td>
+<td style="text-align: right;">14529.46</td>
+<td style="text-align: right;">46950.44</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">98.00</td>
+<td style="text-align: right;">615.5</td>
+<td style="text-align: right;">3199.25</td>
+<td style="text-align: right;">228871</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2007</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">0.44</td>
+<td style="text-align: right;">13684.07</td>
+<td style="text-align: right;">50102.21</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">47.00</td>
+<td style="text-align: right;">295.0</td>
+<td style="text-align: right;">1040.25</td>
+<td style="text-align: right;">264888</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2008</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">0.44</td>
+<td style="text-align: right;">14127.07</td>
+<td style="text-align: right;">49690.28</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">44.75</td>
+<td style="text-align: right;">475.0</td>
+<td style="text-align: right;">4890.75</td>
+<td style="text-align: right;">262908</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2009</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">0.34</td>
+<td style="text-align: right;">18369.77</td>
+<td style="text-align: right;">60853.91</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">44.00</td>
+<td style="text-align: right;">693.0</td>
+<td style="text-align: right;">10568.75</td>
+<td style="text-align: right;">287527</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2010</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">0.38</td>
+<td style="text-align: right;">19790.33</td>
+<td style="text-align: right;">70952.10</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">30.75</td>
+<td style="text-align: right;">719.0</td>
+<td style="text-align: right;">7000.00</td>
+<td style="text-align: right;">349479</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2011</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">16660.08</td>
+<td style="text-align: right;">62061.53</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">139.50</td>
+<td style="text-align: right;">514.5</td>
+<td style="text-align: right;">4988.00</td>
+<td style="text-align: right;">318298</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2012</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">0.44</td>
+<td style="text-align: right;">17987.29</td>
+<td style="text-align: right;">71866.50</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">43.00</td>
+<td style="text-align: right;">307.0</td>
+<td style="text-align: right;">6425.50</td>
+<td style="text-align: right;">382278</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2013</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">0.42</td>
+<td style="text-align: right;">18692.48</td>
+<td style="text-align: right;">71084.97</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">61.00</td>
+<td style="text-align: right;">279.0</td>
+<td style="text-align: right;">6403.50</td>
+<td style="text-align: right;">371001</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2014</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">0.44</td>
+<td style="text-align: right;">18160.21</td>
+<td style="text-align: right;">71488.67</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">58.75</td>
+<td style="text-align: right;">250.5</td>
+<td style="text-align: right;">6406.25</td>
+<td style="text-align: right;">380445</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2015</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">19080.08</td>
+<td style="text-align: right;">71673.99</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">112.75</td>
+<td style="text-align: right;">588.5</td>
+<td style="text-align: right;">8930.50</td>
+<td style="text-align: right;">368330</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2016</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">0.44</td>
+<td style="text-align: right;">15521.57</td>
+<td style="text-align: right;">60119.86</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">103.50</td>
+<td style="text-align: right;">524.5</td>
+<td style="text-align: right;">5321.00</td>
+<td style="text-align: right;">320168</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2017</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">0.42</td>
+<td style="text-align: right;">14923.96</td>
+<td style="text-align: right;">56375.13</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">52.00</td>
+<td style="text-align: right;">460.0</td>
+<td style="text-align: right;">5611.50</td>
+<td style="text-align: right;">294863</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2018</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">0.42</td>
+<td style="text-align: right;">15403.37</td>
+<td style="text-align: right;">59892.62</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">26.50</td>
+<td style="text-align: right;">607.0</td>
+<td style="text-align: right;">5184.00</td>
+<td style="text-align: right;">313244</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reshape data with pivot longer </span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>new_tilapia_data <span class="ot">&lt;-</span> tilapia_data <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>country, <span class="at">names_to =</span> <span class="st">"Year"</span>, <span class="at">values_to =</span> <span class="st">"Tilapia Imports"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Year =</span> <span class="fu">as.numeric</span>(Year))</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># finding total US tilapia imports by year </span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>yearly_tilapia_tot <span class="ot">&lt;-</span> new_tilapia_data <span class="sc">%&gt;%</span> </span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">sum</span>(<span class="st">`</span><span class="at">Tilapia Imports</span><span class="st">`</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># graph it </span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>US_til_graph <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> yearly_tilapia_tot, </span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Year, </span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> <span class="st">`</span><span class="at">sum(\</span><span class="st">`</span>Tilapia Imports\<span class="st">`</span><span class="at">, na.rm = TRUE)</span><span class="st">`</span>)) <span class="sc">+</span> </span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Total US Tilapia Imports"</span>, </span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"US Tilapia Imports overtime"</span>)</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>US_til_graph</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="us_tilapia_imports_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save the graph </span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"figs"</span>, <span class="st">"yearly_tilapia_tot.png"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Saving 7 x 5 in image</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># subset of Ecuador, Honduras, Costa Rica, and Mexico</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>subset_til <span class="ot">&lt;-</span> <span class="fu">subset</span>(<span class="at">x =</span> new_tilapia_data, country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ecuador"</span>, <span class="st">"Honduras"</span>, <span class="st">"Costa Rica"</span>, <span class="st">"Mexico"</span>))</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot in </span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>Til_country_graph <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> subset_til,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Year,</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> <span class="st">`</span><span class="at">Tilapia Imports</span><span class="st">`</span>, </span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> country)) <span class="sc">+</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>country) <span class="sc">+</span> </span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span> </span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span> (<span class="at">title =</span> <span class="st">"Tilapia Imports by country overtime"</span>)</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>Til_country_graph</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="us_tilapia_imports_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"figs"</span>, <span class="st">"Til_bycountry_graph.jpg"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Saving 7 x 5 in image</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

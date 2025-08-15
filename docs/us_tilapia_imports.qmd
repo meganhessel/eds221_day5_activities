@@ -1,0 +1,68 @@
+---
+title: "us_tilapia_imports"
+format: html
+editor: visual
+---
+
+## tilapia 
+
+```{r}
+#load packages and data 
+library(tidyverse)
+library(here)
+library(janitor)
+library(dplyr)
+
+# import data 
+tilapia_data <- read_csv(here::here("data","us_tilapia_imports.csv"))
+
+#explore the data
+names(tilapia_data)
+dim(tilapia_data)
+summary(tilapia_data)
+skimr::skim(tilapia_data)
+
+# reshape data with pivot longer 
+new_tilapia_data <- tilapia_data %>% 
+  pivot_longer(cols = -country, names_to = "Year", values_to = "Tilapia Imports") %>% 
+  mutate(Year = as.numeric(Year))
+
+# finding total US tilapia imports by year 
+yearly_tilapia_tot <- new_tilapia_data %>% 
+  group_by(Year) %>% 
+  summarise(sum(`Tilapia Imports`, na.rm = TRUE))
+
+# graph it 
+US_til_graph <- ggplot(data = yearly_tilapia_tot, 
+       aes(x = Year, 
+           y = `sum(\`Tilapia Imports\`, na.rm = TRUE)`)) + 
+  geom_line() + 
+  labs(x = "Year",
+       y = "Total US Tilapia Imports", 
+       title = "US Tilapia Imports overtime")
+
+US_til_graph
+
+# save the graph 
+ggsave(here::here("figs", "yearly_tilapia_tot.png"))
+```
+
+```{r}
+# subset of Ecuador, Honduras, Costa Rica, and Mexico
+subset_til <- subset(x = new_tilapia_data, country %in% c("Ecuador", "Honduras", "Costa Rica", "Mexico"))
+
+# plot in 
+Til_country_graph <- ggplot(data = subset_til,
+       aes(x = Year,
+           y = `Tilapia Imports`, 
+           colour = country)) +
+  facet_wrap(~country) + 
+  geom_line() + 
+  theme_light() + 
+  labs (title = "Tilapia Imports by country overtime")
+
+Til_country_graph
+
+ggsave(here::here("figs", "Til_bycountry_graph.jpg"))
+```
+
